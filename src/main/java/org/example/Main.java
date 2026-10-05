@@ -4,23 +4,22 @@ import java.util.Scanner;
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    static void main() {
+    public static void main(String[] args) {
         Scanner input = new Scanner(System.in);
         System.out.println("Input time in [s]: ");
-        double input_seconds = input.nextDouble();
-        final double TIME_CONVERSION_CONSTANT = 60;
+        long total_seconds = input.nextLong();
 
-        double day;
-        double hours;
-        double minutes;
-        double spare_seconds;
+        final long TIME_CONVERSION_CONSTANT = 60;
+        final long HOURS_PER_DAY = 24;
 
-        minutes = input_seconds/TIME_CONVERSION_CONSTANT;
-        hours = minutes/TIME_CONVERSION_CONSTANT;
-        day = hours/TIME_CONVERSION_CONSTANT;
-        spare_seconds = input_seconds/TIME_CONVERSION_CONSTANT;
+        long seconds = total_seconds % TIME_CONVERSION_CONSTANT;
+        long total_minutes = total_seconds / TIME_CONVERSION_CONSTANT;
+        long minutes = total_minutes % TIME_CONVERSION_CONSTANT;
+        long total_hours = total_minutes / TIME_CONVERSION_CONSTANT;
+        long hours = total_hours % HOURS_PER_DAY;
+        long days = total_hours / HOURS_PER_DAY;
 
-        System.out.println("The converted time is: " + day + "d " + hours + "h " + minutes + "m " + spare_seconds + "s");
+        System.out.println("The converted time is: " + days + "d " + hours + "h " + minutes + "m " + seconds + "s");
         }
     }
 
